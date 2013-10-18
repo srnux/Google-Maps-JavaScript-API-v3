@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+      html,body,#map-canvas {
+        height: 100%;
+        width:80%;
+        float:left;
+        margin: 0px;
+        padding: 0px;
+        display:inline-block;
+      }
+      #panel {
+        /*position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;*/
+        width: 20%; 
+        float: right;
+        display:inline-block;
+      }
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFX9Lpua-SaLWzZ7KouxcYCD_9AWliqkM&sensor=false">
+    </script>
+</head>
+<body>
+    <div id="inputData" >
+        <p>Origin</p>
+        <!--45.326565,14.441425-->
+        <input type="text" name="Lat" value="45.326565" id="originLat"/>
+        <input type="text" name="Lon" value="14.441425" id="originLon"/>
+        <p>Destinations</p>
+        <!--45.337094,14.43281-->
+        <input type="text" name="Lat" value="45.337094" id="destinationLat"/>
+        <input type="text" name="Lon" value="14.43281" id="destinationLon"/>
+        <input type="text" name="Category" value="sport" />
+        <input type="text" name="Title" value="title" />
+        <input type="text" name="Description" value="description" />
+        <br />
+        <input type="button" name="Get" value="Get" onclick="GetCoordinates();"/>
+    </div>
+    
+    <div id="map-canvas"></div>
+    <div id="panel"></div>
+    <!--<div id="warnings_panel" style="width:100%;height:10%;text-align:center"></div>-->
+
+    <script type="text/javascript"
+      src="Scripts/maps.google.directions.inpulse.js">
+    </script>
+    <script type="text/javascript">
+        var origin = {
+            Lat: 45.326565,
+            Lon: 14.441425
+        };
+        var destinations = {
+            Activity:[
+                {
+                    Lat: 45.330336,
+                    Lon: 14.459546,
+                    Category: "sport",
+                    Title: "Dvorana Mladosti",
+                    Description: "Dvorana Mladosti Trsat, Rijeka"
+                },
+                {
+                    Lat: 45.324377,
+                    Lon: 14.444655,
+                    Category: "culture",
+                    Title: "Narodno Kazalište Ivan Zajc",
+                    Description: "Narodno Kazalište Ivan Zajc, Rijeka"
+                }
+            ]
+        };
+        
+        function GetCoordinates() {
+            calcRoute(origin, destinations);
+        }
+    </script>
+</body>
+</html>
